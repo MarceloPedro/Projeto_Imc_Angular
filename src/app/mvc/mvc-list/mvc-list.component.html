@@ -1,0 +1,39 @@
+
+
+<div class="container">
+    
+    <div class="form-inline my-2">
+        <input (keyup)="debounce.next($event.target.value)" class="form-control mr-sm-2 mb-2" placeholder="Filtrar por nome">
+        <button (click)="importarDados()" class="btn btn-primary mr-sm-2 mb-2">Importar Dados</button>
+     </div>
+
+     <div>
+        <app-success-message [text]="successMessage"></app-success-message>
+        <app-alert-message [text]="alertMessage"></app-alert-message>
+    
+     </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Peso</th>
+                <th>Gordura</th>
+                <th>Altura</th>
+                <th>IMC</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let cliente of dadosImportados | filterByName: filtro">
+           
+                <td>{{ cliente.nome }}</td>
+                <td>{{ cliente.peso }}</td>
+                <td>{{ cliente.gordura }}</td>
+                <td>{{ cliente.altura }}</td>
+                <td>{{ cliente.imc }}</td>
+            
+            
+        </tbody>
+    </table>
+
+
+</div>
